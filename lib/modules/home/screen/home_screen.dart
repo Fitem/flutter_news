@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/common/base/base_view.dart';
 import 'package:flutter_news/common/base/base_widget.dart';
+import 'package:flutter_news/l10n/localization_intl.dart';
 import 'package:flutter_news/modules/home/screen/fourth_screen.dart';
 import 'package:flutter_news/modules/home/screen/head_screen.dart';
 import 'package:flutter_news/modules/home/screen/second_screen.dart';
@@ -14,37 +15,38 @@ class HomeScreen extends BaseWidget {
 
   var currentTab = 0.obs;
   final PageController _pageController = PageController(initialPage: 0);
+  late BuildContext context;
 
-  final List<BottomNavigationBarItem> _bottomTabs = [
-    BottomNavigationBarItem(
-      icon: Icon(
-        Icons.home,
-        size: 20.w,
-      ),
-      label: "首页",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(
-        Icons.hot_tub_sharp,
-        size: 20.w,
-      ),
-      label: "模块2",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(
-        Icons.house_siding_sharp,
-        size: 20.w,
-      ),
-      label: "模块3",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(
-        Icons.home_work_sharp,
-        size: 20.w,
-      ),
-      label: "模块3",
-    ),
-  ];
+  List<BottomNavigationBarItem> get _bottomTabs => [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            size: 20.w,
+          ),
+          label: DemoLocalizations.of(context)?.title,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.hot_tub_sharp,
+            size: 20.w,
+          ),
+          label: "模块2",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.house_siding_sharp,
+            size: 20.w,
+          ),
+          label: "模块3",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home_work_sharp,
+            size: 20.w,
+          ),
+          label: "模块3",
+        ),
+      ];
 
   // pageview 页面
   Widget _buildPageView() {
@@ -89,6 +91,7 @@ class HomeScreen extends BaseWidget {
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     return Scaffold(
       body: _buildPageView(),
       bottomNavigationBar: _buildBottomNavBar(),

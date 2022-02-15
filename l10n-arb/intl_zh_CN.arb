@@ -1,0 +1,22 @@
+{
+  "@@last_modified": "2022-02-14T15:41:53.844224",
+  "title": "Flutter 应用",
+  "@title": {
+    "description": "Title for the Demo application",
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "name": "姓名",
+  "@name": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "user": "用户",
+  "@user": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  }
+}

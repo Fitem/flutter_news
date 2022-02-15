@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_news/common/router/router_page.dart';
+import 'package:flutter_news/l10n/localization_intl.dart';
 import 'package:flutter_news/modules/home/screen/home_screen.dart';
 import 'package:flutter_news/values/values.dart';
 
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
         designSize: const Size(373, 667),
         builder: () {
           return GetMaterialApp(
-            title: "Flutter News",
+            onGenerateTitle: (context){
+              return DemoLocalizations.of(context)!.title;
+            },
             theme: ThemeData(
                 primaryColor: themeColor,
                 // Appbar标题和action为深色模式
@@ -36,6 +40,18 @@ class MyApp extends StatelessWidget {
                   800: themeColor,
                   900: themeColor,
                 })),
+            localizationsDelegates: const [
+              // 本地化的代理类
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              // 注册我们的Delegate
+              DemoLocalizationsDelegate(),
+            ],
+            supportedLocales: const [
+              Locale('en', 'US'), // 美国英语
+              Locale('zh', 'CN'), // 中文简体
+              //其它Locales
+            ],
             home: HomeScreen(),
             getPages: AppPages.pages,
           );
